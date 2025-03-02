@@ -65,9 +65,8 @@ public class Main {
 
         }
 
-        sc.nextLine(); // Consume newline character
+        sc.nextLine();
 
-        // Input Employee Name with Validation
         String name;
         while (true) {
             System.out.print("Enter Employee Name: ");
@@ -79,7 +78,6 @@ public class Main {
             }
         }
 
-        // Input Employee Address
         System.out.print("Enter Employee Address: ");
         String address = sc.nextLine();
 
@@ -103,19 +101,20 @@ public class Main {
                 }
 
                 System.out.print("Enter Bonus: ");
+
                 try {
                     bonus = sc.nextDouble();
+
                 } catch (Exception e) {
                     System.out.println("Invalid input! Please enter a number.");
                     sc.nextLine();
                     return;
                 }
-
                 sc.nextLine();
 
                 staff.add(new SalariedEmployee(name, address, salary, bonus));
                 System.out.println("Employee added successfully!");
-
+                break;
 
             case 3:
                 double rate = 0;
@@ -154,7 +153,6 @@ public class Main {
 
         System.out.println("============================= Display Employees ===============================");
 
-        // Define table styles
         CellStyle centerAlign = new CellStyle(CellStyle.HorizontalAlign.center);
         Table table = new Table(8, BorderStyle.UNICODE_ROUND_BOX, ShownBorders.ALL);
 
@@ -168,11 +166,11 @@ public class Main {
         table.setColumnWidth(6, 10, 15); // Hours
         table.setColumnWidth(7, 10, 15); // Payment
 
-        // Define color codes
+
         String BLUE_TEXT = "\u001B[34m";
         String RESET = "\u001B[0m";
 
-        // Add table headers
+
         table.addCell(BLUE_TEXT + "ID" + RESET, centerAlign);
         table.addCell(BLUE_TEXT + "Name" + RESET, centerAlign);
         table.addCell(BLUE_TEXT + "Address" + RESET, centerAlign);
@@ -182,15 +180,13 @@ public class Main {
         table.addCell(BLUE_TEXT + "Hours" + RESET, centerAlign);
         table.addCell(BLUE_TEXT + "Payment" + RESET, centerAlign);
 
-        // Add employee data to the table
-        for (int i = 0; i < staff.size(); i++) {
-            StaffMember employee = staff.get(i);
 
-            table.addCell(String.valueOf(i + 1), centerAlign); // ID
+        for (StaffMember employee:staff) {
+            table.addCell(String.valueOf(employee.getId()), centerAlign); // ID
             table.addCell(employee.getName(), centerAlign);
             table.addCell(employee.getAddress(), centerAlign);
 
-            // Default empty values
+
             String salary = "-";
             String bonus = "-";
             String rate = "-";
@@ -208,7 +204,7 @@ public class Main {
                 hours = String.valueOf(ho.getHourWorked());
             }
 
-            // Add employee-specific values to the table
+
             table.addCell(salary, centerAlign);
             table.addCell(bonus, centerAlign);
             table.addCell(rate, centerAlign);
@@ -216,7 +212,7 @@ public class Main {
             table.addCell(payment, centerAlign);
         }
 
-        // Print the table
+
         System.out.println(table.render());
     }
 
