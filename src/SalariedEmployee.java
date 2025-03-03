@@ -1,6 +1,7 @@
 public class SalariedEmployee extends StaffMember{
     private double salary;
     private double bonus;
+    private String type="SalariedEmployee";
 
     public SalariedEmployee( String name, String address, double salary, double bonus) {
         super(name, address);
@@ -10,6 +11,14 @@ public class SalariedEmployee extends StaffMember{
 
     public double getSalary() {
         return salary;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void setSalary(double salary) {

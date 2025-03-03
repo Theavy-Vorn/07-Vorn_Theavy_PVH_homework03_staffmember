@@ -1,6 +1,7 @@
 public class HourlySalaryEmployee extends StaffMember{
     private int hourWorked;
     private double rate;
+    private String  type="HourlySalaryEmployee";
 
     public HourlySalaryEmployee(String name, String address, double rate, int hourWorked) {
         super(name, address);
@@ -14,6 +15,14 @@ public class HourlySalaryEmployee extends StaffMember{
 
     public void setHourWorked(int hourWorked) {
         this.hourWorked = hourWorked;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getRate() {
